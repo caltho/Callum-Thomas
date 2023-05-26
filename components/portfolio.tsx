@@ -310,7 +310,10 @@ const settings = {
   slidesToScroll: 1,
 };
 
-function Carousel({ cards }) {
+type CarouselType = {
+  cards: string[];
+};
+function Carousel({ cards }: CarouselType) {
   // As we have used custom buttons, we need a reference variable to
   // change the state
   const [slider, setSlider] = React.useState<Slider | null>(null);

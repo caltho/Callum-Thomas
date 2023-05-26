@@ -12,7 +12,7 @@ export default function About() {
         color={useColorModeValue("gray.700", "gray.200")}
         fontSize="lg"
       >
-        Hi, I'm Callum and you are visiting my portfolio!
+        Hi, I&apos;m Callum and you are visiting my portfolio!
         <br />
         <br />I am a Software Engineer who is passionate about the dynamic and
         fast-changing world of technology. With a strong background in
@@ -22,7 +22,7 @@ export default function About() {
         solutions.
         <br />
         <br />
-        When I'm not coding you will find me practicing jiu jitsu, playing
+        When I&apos;m not coding you will find me practicing jiu jitsu, playing
         volleyball, or cycling around the city. If you would like to get in
         touch, let me know!
       </Text>

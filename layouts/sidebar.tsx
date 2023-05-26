@@ -106,6 +106,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 
 interface NavItemProps extends FlexProps {
   icon: IconType;
+  href: string;
   children: ReactText;
 }
 const NavItem = ({ icon, href, children, ...rest }: NavItemProps) => {
