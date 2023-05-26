@@ -4,7 +4,7 @@ import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 
 export default function About() {
   return (
-    <Box p={12}>
+    <Box p={12} pt={6}>
       <Heading>About me</Heading>
       <Text
         as="p"

@@ -62,9 +62,6 @@ export default function CallToActionWithAnnotation() {
             >
               Download Resume
             </Button>
-            <Button variant={"link"} colorScheme={"blue"} size={"sm"}>
-              See projects
-            </Button>
           </Stack>
         </Stack>
       </Container>

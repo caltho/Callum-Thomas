@@ -7,8 +7,8 @@ import * as React from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "P-Cal",
-  description: "Perpetual Calendar App",
+  title: "Callum Thomas",
+  description: "Portfolio",
 };
 
 export default function RootLayout({
