@@ -147,7 +147,13 @@ function TrafficToolsPortfolio() {
             </Link>
           </Heading>
           <Text as="i" color="green.500">
-            <Link href="www.traffictools.com.au">traffictools.com.au</Link>
+            <Link
+              href="https://www.traffictools.com.au"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              traffictools.com.au
+            </Link>
           </Text>
           <Text
             as="p"
@@ -171,7 +177,7 @@ function TrafficToolsPortfolio() {
       <Modal onClose={onClose} isOpen={isOpen} isCentered size="6xl">
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>Screenshots</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Carousel
@@ -281,7 +287,7 @@ function CentreSafePortfolio() {
       <Modal onClose={onClose} isOpen={isOpen} isCentered size="6xl">
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>{headingText}</ModalHeader>
+          <ModalHeader>Screenshots</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Carousel

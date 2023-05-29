@@ -13,11 +13,11 @@ import {
 } from "react-icons/tb";
 
 export default function TechStack() {
-  const size: number = 24;
+  const size: number = 20;
   return (
     <Box pt={12}>
       <Heading>Tech Stack</Heading>
-      <Center>
+      <Center pt={6}>
         <SimpleGrid columns={4} spacing={6}>
           <Center flexDirection="column">
             <Icon boxSize={size} as={TbBrandNextjs} />

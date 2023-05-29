@@ -14,6 +14,7 @@ import {
   useDisclosure,
   BoxProps,
   FlexProps,
+  Button,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -100,6 +101,18 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           {link.name}
         </NavItem>
       ))}
+      <Flex p="6" pt={3}>
+        <Button
+          width="100%"
+          as="a"
+          href="Callum Thomas Resume.pdf"
+          colorScheme="green"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download resume
+        </Button>
+      </Flex>
     </Box>
   );
 };
@@ -169,7 +182,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       />
 
       <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-        Logo
+        Callum's Portfolio
       </Text>
     </Flex>
   );

@@ -52,6 +52,10 @@ export default function CallToActionWithAnnotation() {
             position={"relative"}
           >
             <Button
+              as="a"
+              href="Callum Thomas Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               colorScheme={"green"}
               bg={"green.400"}
               rounded={"full"}
@@ -60,7 +64,7 @@ export default function CallToActionWithAnnotation() {
                 bg: "green.500",
               }}
             >
-              Download Resume
+              Download resume
             </Button>
           </Stack>
         </Stack>
