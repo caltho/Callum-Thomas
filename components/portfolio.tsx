@@ -161,14 +161,14 @@ function TrafficToolsPortfolio() {
             color={useColorModeValue("gray.700", "gray.200")}
             fontSize="lg"
           >
-            Traffic Tools is an open-source and free webapp created for use by
-            anyone within the town-planning industry. In developing the webapp I
-            aimed to create a tool that would be useful for professionals and
+            Traffic Tools is an open-source and free web app created for use by
+            anyone within the town-planning industry. In developing the web app
+            I aimed to create a tool that would be useful for professionals and
             laypeople, while encouraging innovation and knowledge-sharing within
             the profession.
             <br />
             <br />I built Traffic Tools using next.js with typescript,
-            google-firebase for user authentication, Chakra-UI for the component
+            Google-firebase for user authentication, Chakra-UI for the component
             library, and the chart.js plugin for creating charts.
           </Text>
         </Box>
@@ -263,7 +263,7 @@ function CentreSafePortfolio() {
             </Link>
           </Heading>
           <Text as="i" color="green.500">
-            <Link href="www.centresafe.com">centresafe.com</Link>
+            <Link href="http://www.centresafe.com/index">centresafe.com</Link>
           </Text>
           <Text
             as="p"
@@ -271,13 +271,12 @@ function CentreSafePortfolio() {
             color={useColorModeValue("gray.700", "gray.200")}
             fontSize="lg"
           >
-            CentreSafe is a risk management service created for use by large
-            companies and NGOs. The CentreSafe portal allows users to quickly
-            understand where the critical risks lie within their organisation,
-            and to forecast upcoming risks. Risk management data within
-            Centresafe is immutable which allows organisations to clearly see
-            the risk treatment process from identification to mitigation and
-            elimination. <br />
+            CentreSafe is a risk management service created for use by companies
+            and NGOs. The CentreSafe portal allows users to quickly understand
+            where the critical risks lie within their organisation, and to
+            forecast upcoming risks. Risk management data within Centresafe is
+            immutable allowing organisations to clearly see the risk treatment
+            lifecycle from identification to mitigation and elimination. <br />
             <br />I built CentreSafe using the LAMP software stack, which
             includes PHP, MySQL and hosting via AWS.
           </Text>

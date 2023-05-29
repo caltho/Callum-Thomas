@@ -15,8 +15,8 @@ export default function About() {
         Hi, I&apos;m Callum and you are visiting my portfolio!
         <br />
         <br />I am a Software Engineer who is passionate about the dynamic and
-        fast-changing world of technology. I am dedicated to continual learning,
-        practicing agile methodologies and seek to be involved in useful and
+        fast-changing world of technology. I am dedicated to continual learning
+        and practising agile methodologies and seek to be involved in useful and
         impactful projects.
         <br />
         <br />
@@ -28,7 +28,7 @@ export default function About() {
         <br />
         When I&apos;m not coding you will find me practicing jiu jitsu, playing
         volleyball, or cycling around the city. If you would like to get in
-        touch, let me know by filling out the google form at the bottom of this
+        touch, let me know by filling out the Google form at the bottom of this
         page!
       </Text>
     </Box>
