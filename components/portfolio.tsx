@@ -32,6 +32,7 @@ import { IconButton, useBreakpointValue } from "@chakra-ui/react";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
+import MainHeader from "./header";
 
 interface IBlogTags {
   tags: Array<string>;
@@ -74,7 +75,7 @@ interface BlogAuthorProps {
 export const ArticleList = () => {
   return (
     <Container maxW={"7xl"} p="12">
-      <Heading as="h1">Portfolio</Heading>
+      <MainHeader title="Portfolio" />
 
       <TrafficToolsPortfolio />
 
@@ -137,7 +138,7 @@ function TrafficToolsPortfolio() {
         >
           <BlogTags tags={typeTags} />
           <LanguageTags tags={techTags} />
-          <Heading marginTop="1">
+          <Heading size="lg" marginTop="1">
             <Link
               textDecoration="none"
               _hover={{ textDecoration: "none" }}
@@ -253,7 +254,7 @@ function CentreSafePortfolio() {
         >
           <BlogTags tags={typeTags} />
           <LanguageTags tags={techTags} />
-          <Heading marginTop="1">
+          <Heading marginTop="1" size="lg">
             <Link
               textDecoration="none"
               _hover={{ textDecoration: "none" }}

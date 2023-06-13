@@ -2,7 +2,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Metadata } from "next";
-import { Divider, Flex } from "@chakra-ui/react";
+import { Divider, Flex, Center, VStack } from "@chakra-ui/react";
 import CallToActionWithAnnotation from "@/components/hero";
 import ArticleList from "@/components/portfolio";
 import About from "@/components/about";
@@ -14,22 +14,20 @@ type TimePeriod = {
 };
 
 export default function Page() {
-  const timePeriod: TimePeriod = {
-    headingText: "This week.",
-  };
-
   return (
-    <Flex direction="column">
-      <section id="Title"></section>
-      <CallToActionWithAnnotation />
-      <section id="AboutMe"></section>
-      <About />
-      <section id="Portfolio"></section>
-      <ArticleList />
-      <section id="TechStack"></section>
-      <TechStack />
-      <section id="Contact"></section>
-      <ContactForm />
+    <Flex maxWidth="1000px">
+      <VStack>
+        <section id="Title"></section>
+        <CallToActionWithAnnotation />
+        <section id="AboutMe"></section>
+        <About />
+        <section id="Portfolio"></section>
+        <ArticleList />
+        <section id="TechStack"></section>
+        <TechStack />
+        <section id="Contact"></section>
+        <ContactForm />
+      </VStack>
     </Flex>
   );
 }

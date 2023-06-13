@@ -15,19 +15,12 @@ import {
 export default function CallToActionWithAnnotation() {
   return (
     <>
-      <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-
       <Container maxW={"3xl"}>
         <Stack
           as={Box}
           textAlign={"center"}
           spacing={{ base: 4, md: 6 }}
-          py={{ base: 20, md: 36 }}
+          py={{ base: 16, md: 24 }}
         >
           <Heading
             fontWeight={600}
@@ -50,23 +43,7 @@ export default function CallToActionWithAnnotation() {
             align={"center"}
             alignSelf={"center"}
             position={"relative"}
-          >
-            <Button
-              as="a"
-              href="Callum Thomas Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              colorScheme={"green"}
-              bg={"green.400"}
-              rounded={"full"}
-              px={6}
-              _hover={{
-                bg: "green.500",
-              }}
-            >
-              Download resume
-            </Button>
-          </Stack>
+          ></Stack>
         </Stack>
       </Container>
     </>

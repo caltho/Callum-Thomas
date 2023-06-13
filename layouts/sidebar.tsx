@@ -15,6 +15,7 @@ import {
   BoxProps,
   FlexProps,
   Button,
+  Center,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -37,6 +38,8 @@ interface LinkItemProps {
   icon: IconType;
   href: string;
 }
+import "@fontsource/montserrat";
+
 const LinkItems: Array<LinkItemProps> = [
   { name: "Welcome", icon: AiOutlinePlaySquare, href: "Title" },
   { name: "About me", icon: AiOutlineInfoCircle, href: "AboutMe" },
@@ -68,9 +71,9 @@ export default function SimpleSidebar({ children }: { children: ReactNode }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
+      <Center ml={{ base: 0, md: 60 }} p="4">
         {children}
-      </Box>
+      </Center>
     </Box>
   );
 }
@@ -82,16 +85,16 @@ interface SidebarProps extends BoxProps {
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   return (
     <Box
-      bg={useColorModeValue("white", "gray.900")}
+      bg={useColorModeValue("gray.100", "gray.900")}
       borderRight="1px"
-      borderRightColor={useColorModeValue("gray.200", "gray.700")}
+      borderRightColor={useColorModeValue("gray.100", "gray.700")}
       w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
+        <Text fontSize="xl" fontFamily="body" fontWeight="bold">
           Callum Thomas
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
@@ -109,6 +112,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           colorScheme="green"
           target="_blank"
           rel="noopener noreferrer"
+          size="sm"
         >
           Download resume
         </Button>
@@ -182,7 +186,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       />
 
       <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-        Callum's Portfolio
+        Callum Thomas
       </Text>
     </Flex>
   );

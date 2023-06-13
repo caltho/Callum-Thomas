@@ -1,11 +1,12 @@
 "use client";
 
 import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
+import MainHeader from "./header";
 
 export default function About() {
   return (
     <Box p={12} pt={6}>
-      <Heading>About me</Heading>
+      <MainHeader title="About Me" />
       <Text
         as="p"
         marginTop="2"

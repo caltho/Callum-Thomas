@@ -1,9 +1,8 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Providers } from "./providers";
-import SidebarWithHeader from "@/layouts/sidebar";
 import * as React from "react";
-
+import SimpleSidebar from "@/layouts/sidebar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -21,7 +20,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <header></header>
         <Providers>
-          <SidebarWithHeader>{children}</SidebarWithHeader>
+          <SimpleSidebar>{children}</SimpleSidebar>
         </Providers>
       </body>
     </html>
