@@ -43,8 +43,9 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 10, 10, 10;
+    --background-end-rgb: 5, 5, 5;
+    --background-mid-rgb: 30, 30, 30;
 
     --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
     --secondary-glow: linear-gradient(
@@ -87,11 +88,11 @@ body {
 
 body {
   background: linear-gradient(
-      to bottom,
+      to right,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-mid-rgb));
 }
 
 a {
@@ -99,8 +100,11 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.disable-scroll {
+  overflow: hidden !important;
 }
+
+.enable-scroll {
+  overflow: auto;
+}
+
