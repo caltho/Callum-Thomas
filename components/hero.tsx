@@ -37,7 +37,12 @@ export default function Hero({ scrollFunction }: HeroType) {
         height="100vh"
         width="100vw"
       >
-        <Divider m="0px" p="0px" />
+        <Flex
+          bgGradient="linear(to-r, rgba(10,10,10, 0), rgba(200,200,200, 0.5), rgba(5,5,5,0))"
+          height={1}
+          width="100%"
+          mb={6}
+        ></Flex>
 
         <Flex direction="column">
           {name.map((name, index) => (
@@ -52,8 +57,12 @@ export default function Hero({ scrollFunction }: HeroType) {
             </Flex>
           ))}
         </Flex>
-        <Divider />
-
+        <Flex
+          bgGradient="linear(to-r, rgba(10,10,10, 0), rgba(200,200,200, 0.5), rgba(5,5,5,0))"
+          height={1}
+          width="100%"
+          mt={6}
+        ></Flex>
         <Text color={"gray.400"} pt={6}>
           Hi, I&apos;m Callum and you&apos;re visiting my portfolio. Check out
           my{" "}
@@ -87,7 +96,7 @@ const Letter = ({ letter, scrollFunction }: Letter) => {
     "blue.400",
     "red.400",
     "yellow.400",
-    "purple.400",
+    "teal.400",
   ];
   const [colourNumber, setColourNumber] = useState<number>(
     letter === "o" ? 1 : 0

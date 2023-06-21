@@ -10,6 +10,7 @@ import {
   Button,
   Center,
   GridItem,
+  Grid,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Brick from "./brickSlider/brick";
@@ -47,7 +48,7 @@ export default function BrickSlider() {
       title: "Traffic Tools",
       blurb: "My traffic tools website",
       image: "Traffic Tools Logo.png",
-      colour: "gray.700",
+      colour: "yellow.400",
       link: "",
     },
     {
@@ -58,7 +59,7 @@ export default function BrickSlider() {
       title: "CentreSafe",
       blurb: "My traffic tools website",
       image: "CTS Favicon - Original.svg",
-      colour: "orange.100",
+      colour: "blue.400",
       link: "",
     },
     {
@@ -66,10 +67,10 @@ export default function BrickSlider() {
       y: 1,
       value: "Box3",
       clicked: false,
-      title: "Callum Thomas",
-      blurb: "This is me",
-      image: "CT.svg",
-      colour: "green.100",
+      title: "Portfolio",
+      blurb: "My portfolio website - you're here right now!",
+      image: "Portfolio.png",
+      colour: "green.400",
       link: "",
     },
     {
@@ -80,7 +81,7 @@ export default function BrickSlider() {
       title: "Connect Five",
       blurb: "Two-player connect five game",
       image: "",
-      colour: "red.700",
+      colour: "orange.400",
       link: "",
     },
     {
@@ -91,7 +92,7 @@ export default function BrickSlider() {
       title: "Sliding Tiles",
       blurb: "You're looking at it!",
       image: "",
-      colour: "yellow.800",
+      colour: "red.400",
       link: "",
     },
   ]);
@@ -130,34 +131,29 @@ export default function BrickSlider() {
     return text;
   };
   return (
-    <VStack position="relative">
-      <Box
-        style={{ position: "absolute", top: 0, left: 0, zIndex: -1 }}
-        height="100%"
+    <Flex height="100vh" width="100%" flexDirection="column">
+      <Heading
+        color="gray.300"
+        fontSize="2rem"
         width="100%"
+        textAlign="center"
+        p={6}
       >
-        <Center h="100%" w="100%">
-          <VStack>
-            <Heading color="gray.300" fontSize="8rem">
-              CHECK OUT MY
-            </Heading>
-            <Heading color="gray.300" fontSize="7rem">
-              LATEST PROJECTS
-            </Heading>
-          </VStack>
-        </Center>
-      </Box>
-      <SimpleGrid columns={3} spacing={0} style={{ zIndex: 0 }}>
+        CHECK OUT MY LATEST PROJECTS
+      </Heading>
+
+      <Grid templateColumns="repeat(3, 1fr)" gap={0} w="100%">
         {sortGrid(grid).map((box, index) => (
-          <SlidingBlock
-            key={index}
-            box={box}
-            grid={grid}
-            handleUpdateGrid={handleUpdateGrid}
-          />
+          <GridItem key={index}>
+            <SlidingBlock
+              box={box}
+              grid={grid}
+              handleUpdateGrid={handleUpdateGrid}
+            />
+          </GridItem>
         ))}
-      </SimpleGrid>
-    </VStack>
+      </Grid>
+    </Flex>
   );
 }
 
@@ -205,35 +201,30 @@ const SlidingBlock = ({ box, grid, handleUpdateGrid }: SlidingBlock) => {
   };
 
   return (
-    <Box position="relative">
-      <Box
-        aspectRatio={1}
-        onClick={isAdjacent ? handleBoxClick : undefined}
-        border={box.value !== "empty" ? "8px" : ""}
-        cursor="pointer"
-        maxWidth="300px"
-        padding="10px"
-        margin="0.1em"
-        borderRadius="2xl"
-        background={box.colour}
-        style={
-          !isSliding
-            ? {}
-            : {
-                ...slideAnimation,
-              }
-        }
-      >
-        {box.value !== "empty" ? (
-          <Brick
-            title={box.title}
-            image={box.image}
-            blurb={box.blurb}
-            link={box.link}
-            colour={box.colour}
-          />
-        ) : undefined}
-      </Box>
+    <Box
+      width="100%"
+      aspectRatio={1}
+      onClick={isAdjacent ? handleBoxClick : undefined}
+      border={box.value !== "empty" ? "1px" : ""}
+      cursor="pointer"
+      background={box.colour}
+      style={
+        !isSliding
+          ? {}
+          : {
+              ...slideAnimation,
+            }
+      }
+    >
+      {box.value !== "empty" ? (
+        <Brick
+          title={box.title}
+          image={box.image}
+          blurb={box.blurb}
+          link={box.link}
+          colour={box.colour}
+        />
+      ) : undefined}
       {/*<Box
                 style={{ position: "absolute", top: 0, left: 0, zIndex: -1 }}
                 height="300px"

@@ -19,6 +19,7 @@ import BrickSlider from "@/components/brickSlider";
 import Typewriter from "@/components/typewriter";
 import { useEffect, useState } from "react";
 import { Element, scroller } from "react-scroll";
+import Contact from "@/components/contact";
 
 type TimePeriod = {
   headingText: string;
@@ -26,6 +27,7 @@ type TimePeriod = {
 
 export default function Page() {
   const [scrollEnabled, setScrollEnabled] = useState(false);
+  const [enableTypewriter, setEnableTypewriter] = useState<boolean>(false);
 
   const scrollToAbout = () => {
     scrollEnabled
@@ -38,7 +40,7 @@ export default function Page() {
       offset: -50, // Adjust the offset as needed to align with your layout
     });
 
-    console.log("ok");
+    setEnableTypewriter(true);
   };
 
   return (
@@ -52,14 +54,13 @@ export default function Page() {
       <Element name="Title"></Element>
       <Hero scrollFunction={scrollToAbout} />
       <Element name="AboutMe"></Element>
-      <About />
+      <About enableTypewriter={enableTypewriter} />
       <Element name="Portfolio"></Element>
       <BrickSlider />
-      <ArticleList />
       <Element name="TechStack"></Element>
       <TechStack />
       <Element name="Contact"></Element>
-      <ContactForm />
+      <Contact />
     </Box>
   );
 }

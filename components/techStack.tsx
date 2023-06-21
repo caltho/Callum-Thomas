@@ -26,8 +26,8 @@ import { IconType } from "react-icons";
 export default function TechStack() {
   return (
     <>
-      <Box width="100%" p={12} pt={6}>
-        <MainHeader title="Tech Stack" />
+      <Box width="100%" height="60vh" p={12} pt={6}>
+        <Heading color="white">Tech Stack</Heading>
         <Center pt={6}>
           <SimpleGrid columns={4} spacing={6} width="100%">
             <CustomIcon iconName={TbBrandNextjs} title="next.js" />
@@ -63,7 +63,7 @@ const CustomIcon = ({ iconName, title }: CustomIcon) => {
   };
 
   return (
-    <Center flexDirection="column">
+    <Center flexDirection="column" color="white">
       <Icon
         as={iconName}
         boxSize={20}

@@ -1,6 +1,10 @@
 import React, { RefObject, useEffect, useRef, useState } from "react";
 
-const Typewriter = () => {
+type Typewriter = {
+  enableTypewriter: boolean;
+};
+
+const Typewriter = ({ enableTypewriter }: Typewriter) => {
   const typewriterRef = useRef<HTMLPreElement>(null);
   const object = `const person = {
   name: 'Callum Thomas',
@@ -16,6 +20,8 @@ const Typewriter = () => {
   const [isTypingComplete, setIsTypingComplete] = useState(false);
 
   useEffect(() => {
+    if (!enableTypewriter) return;
+
     const setupTypewriter = (element: HTMLPreElement) => {
       const HTML = element.innerHTML;
       element.innerHTML = "";
@@ -102,7 +108,7 @@ const Typewriter = () => {
       ? setupTypewriter(typewriterElement)
       : null;
     typewriter?.type();
-  }, []);
+  }, [enableTypewriter]);
 
   return (
     <pre ref={typewriterRef} id="typewriter" className="var-highlight">

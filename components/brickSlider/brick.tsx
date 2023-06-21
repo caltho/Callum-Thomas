@@ -5,9 +5,10 @@ import {
   SimpleGrid,
   Box,
   Heading,
-  VStack,
   Image,
   Text,
+  Center,
+  VStack,
 } from "@chakra-ui/react";
 import { useState } from "react";
 
@@ -21,28 +22,32 @@ type Brick = {
 
 export default function Brick({ title, image, link, blurb, colour }: Brick) {
   return (
-    <VStack style={{ zIndex: 100 }} bgColor={colour}>
-      <Heading fontSize={{ base: "md", sm: "xl", md: "xl" }}>{title}</Heading>
+    <Flex p={6} flexDirection="column">
+      <Heading
+        color="gray.800"
+        textAlign="center"
+        p={3}
+        fontSize={{ base: "md", sm: "xl", md: "3xl" }}
+      >
+        {title}
+      </Heading>
+
+      <Image
+        p={3}
+        alignSelf="center"
+        style={{
+          maxWidth: "60%",
+          maxHeight: "200px",
+          aspectRatio: "1",
+        }}
+        src={image}
+      />
       <Text>{blurb}</Text>
-      <a href={link} rel="noopener noreferrer" target="_blank">
-        <img
-          src={image}
-          style={{
-            maxWidth: "60%",
-            maxHeight: "200px",
-            aspectRatio: "1",
-            transition: "transform 0.3s ease-in-out",
-          }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.transform =
-              "scale(1.1) rotate(10deg) skew(2deg)";
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.transform = "none";
-          }}
-          alt="Image"
-        />
-      </a>
-    </VStack>
+      <Text>
+        <a href={link} rel="noopener noreferrer" target="_blank">
+          Github
+        </a>
+      </Text>
+    </Flex>
   );
 }
