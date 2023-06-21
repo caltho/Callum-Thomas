@@ -9,19 +9,25 @@ import {
   Text,
   Button,
   Center,
+  GridItem,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Brick from "./brickSlider/brick";
 
-export default function BrickSlider() {
-  type GridElement = {
-    x: number;
-    y: number;
-    value: string;
-    clicked: boolean;
-  };
+type GridElement = {
+  x: number;
+  y: number;
+  value: string;
+  clicked: boolean;
+  title: string;
+  blurb: string;
+  image: string;
+  colour: string;
+  link: string;
+};
 
-  const [grid, setGrid] = useState<GridElement>([
+export default function BrickSlider() {
+  const [grid, setGrid] = useState<GridElement[]>([
     {
       x: 0,
       y: 0,
@@ -31,6 +37,7 @@ export default function BrickSlider() {
       blurb: "",
       image: "",
       colour: "",
+      link: "",
     },
     {
       x: 0,
@@ -41,6 +48,7 @@ export default function BrickSlider() {
       blurb: "My traffic tools website",
       image: "Traffic Tools Logo.png",
       colour: "gray.700",
+      link: "",
     },
     {
       x: 1,
@@ -51,6 +59,7 @@ export default function BrickSlider() {
       blurb: "My traffic tools website",
       image: "CTS Favicon - Original.svg",
       colour: "orange.100",
+      link: "",
     },
     {
       x: 1,
@@ -61,6 +70,7 @@ export default function BrickSlider() {
       blurb: "This is me",
       image: "CT.svg",
       colour: "green.100",
+      link: "",
     },
     {
       x: 0,
@@ -71,6 +81,7 @@ export default function BrickSlider() {
       blurb: "Two-player connect five game",
       image: "",
       colour: "red.700",
+      link: "",
     },
     {
       x: 1,
@@ -81,27 +92,31 @@ export default function BrickSlider() {
       blurb: "You're looking at it!",
       image: "",
       colour: "yellow.800",
+      link: "",
     },
   ]);
 
-  const handleUpdateGrid = (value) => {
-    const clickedBox = grid.find((item) => item.value === value);
-    const emptyBox = grid.find((box) => box.value === "empty");
+  const handleUpdateGrid = (value: string) => {
+    const clickedBox: GridElement = grid.find(
+      (item) => item.value === value
+    ) as GridElement;
+    const emptyBox: GridElement = grid.find(
+      (box) => box.value === "empty"
+    ) as GridElement;
 
-    const updatedGrid = grid.map((box) => {
+    const updatedGrid: GridElement[] = grid.map((box: GridElement) => {
       if (box.value === "empty") {
-        return { ...box, x: clickedBox.x, y: clickedBox.y };
-      } else if (box.x === clickedBox.x && box.y === clickedBox.y) {
-        return { ...box, x: emptyBox.x, y: emptyBox.y };
+        return { ...box, x: clickedBox?.x, y: clickedBox?.y };
+      } else if (box.x === clickedBox?.x && box.y === clickedBox?.y) {
+        return { ...box, x: emptyBox?.x, y: emptyBox?.y };
       } else {
         return box;
       }
     });
-    console.log(clickedBox);
     setGrid(updatedGrid);
   };
 
-  const sortGrid = (inputGrid) => {
+  const sortGrid = (inputGrid: GridElement[]) => {
     return [...inputGrid].sort((a, b) => {
       if (a.x === b.x) {
         return a.y - b.y;
@@ -124,85 +139,102 @@ export default function BrickSlider() {
         <Center h="100%" w="100%">
           <VStack>
             <Heading color="gray.300" fontSize="8rem">
-              CHECK OUT
+              CHECK OUT MY
             </Heading>
             <Heading color="gray.300" fontSize="7rem">
-              MY PORTFOLIO
+              LATEST PROJECTS
             </Heading>
           </VStack>
         </Center>
       </Box>
       <SimpleGrid columns={3} spacing={0} style={{ zIndex: 0 }}>
-        {sortGrid(grid).map((box, index) => {
-          const emptyBox = grid.find((item) => item.value === "empty");
-          const isAdjacent =
-            (box.x === emptyBox.x && Math.abs(box.y - emptyBox.y) === 1) ||
-            (box.y === emptyBox.y && Math.abs(box.x - emptyBox.x) === 1);
+        {sortGrid(grid).map((box, index) => (
+          <SlidingBlock
+            key={index}
+            box={box}
+            grid={grid}
+            handleUpdateGrid={handleUpdateGrid}
+          />
+        ))}
+      </SimpleGrid>
+    </VStack>
+  );
+}
 
-          const slideDistance = "100%";
+type SlidingBlock = {
+  box: GridElement;
+  grid: GridElement[];
+  handleUpdateGrid: (value: string) => void;
+};
+const SlidingBlock = ({ box, grid, handleUpdateGrid }: SlidingBlock) => {
+  const emptyBox = grid.find((item) => item.value === "empty");
+  const isAdjacent =
+    (box.x === emptyBox?.x && Math.abs(box.y - emptyBox?.y) === 1) ||
+    (box.y === emptyBox?.y && Math.abs(box.x - emptyBox?.x) === 1);
 
-          const slideDirection =
-            box.x === emptyBox.x
-              ? box.y > emptyBox.y
-                ? `(-${slideDistance},0,0)`
-                : "(100%,0,0)"
-              : box.y === emptyBox.y
-              ? box.x > emptyBox.x
-                ? "(0,-100%,0)"
-                : "(0,100%,0)"
-              : "";
+  const slideDistance = "100%";
 
-          const slideAnimation = isAdjacent
-            ? {
-                transform: `translate3d${slideDirection}`,
-                transition: "transform 0.8s ease-in-out",
+  const slideDirection =
+    box.x === emptyBox?.x
+      ? box.y > emptyBox?.y
+        ? `(-${slideDistance},0,0)`
+        : "(100%,0,0)"
+      : box.y === emptyBox?.y
+      ? box.x > emptyBox?.x
+        ? "(0,-100%,0)"
+        : "(0,100%,0)"
+      : "";
+
+  const slideAnimation = isAdjacent
+    ? {
+        transform: `translate3d${slideDirection}`,
+        transition: "transform 0.8s ease-in-out",
+      }
+    : {};
+
+  const [isSliding, setIsSliding] = useState(false);
+
+  const handleBoxClick = () => {
+    console.log("hello");
+    setIsSliding(true);
+    // After a delay, update the final position of the box
+    setTimeout(() => {
+      setIsSliding(false);
+      handleUpdateGrid(box.value); // Call the original handleBoxClick to update the grid state
+    }, 800);
+  };
+
+  return (
+    <Box position="relative">
+      <Box
+        aspectRatio={1}
+        onClick={isAdjacent ? handleBoxClick : undefined}
+        border={box.value !== "empty" ? "8px" : ""}
+        cursor="pointer"
+        maxWidth="300px"
+        padding="10px"
+        margin="0.1em"
+        borderRadius="2xl"
+        background={box.colour}
+        style={
+          !isSliding
+            ? {}
+            : {
+                ...slideAnimation,
               }
-            : {};
-
-          const [isSliding, setIsSliding] = useState(false);
-
-          const handleBoxClick = () => {
-            console.log("hello");
-            setIsSliding(true);
-            // After a delay, update the final position of the box
-            setTimeout(() => {
-              setIsSliding(false);
-              handleUpdateGrid(box.value); // Call the original handleBoxClick to update the grid state
-            }, 800);
-          };
-
-          return (
-            <Box position="relative">
-              <Box
-                aspectRatio={1}
-                key={index}
-                onClick={isAdjacent ? handleBoxClick : undefined}
-                border={box.value !== "empty" ? "8px" : ""}
-                cursor="pointer"
-                maxWidth="300px"
-                padding="10px"
-                margin="0.1em"
-                borderRadius="2xl"
-                background={box.colour}
-                style={
-                  !isSliding
-                    ? {}
-                    : {
-                        ...slideAnimation,
-                      }
-                }
-              >
-                {box.value !== "empty" ? (
-                  <Brick
-                    title={box.title}
-                    image={box.image}
-                    blurb={box.blurb}
-                    link={box.link}
-                    colour={box.colour}
-                  />
-                ) : undefined}
-              </Box>
-              {/*<Box
+        }
+      >
+        {box.value !== "empty" ? (
+          <Brick
+            title={box.title}
+            image={box.image}
+            blurb={box.blurb}
+            link={box.link}
+            colour={box.colour}
+          />
+        ) : undefined}
+      </Box>
+      {/*<Box
                 style={{ position: "absolute", top: 0, left: 0, zIndex: -1 }}
                 height="300px"
                 width="300px"
@@ -213,38 +245,6 @@ export default function BrickSlider() {
                   </Heading>
                 </Center>
                 </Box>*/}
-            </Box>
-          );
-        })}
-      </SimpleGrid>
-    </VStack>
-  );
-}
-
-const SlidingBlock = () => {
-  const [isSliding, setIsSliding] = useState(false);
-  const handleClick = () => {
-    setIsSliding(true);
-    setTimeout(() => {
-      setIsSliding(false);
-    }, 800);
-  };
-
-  const slideAnimation = {
-    transform: `translate3d(10%,0,0)`,
-    transition: "transform 0.8s ease-in-out",
-  };
-
-  return (
-    <Button
-      onClick={handleClick}
-      style={
-        !isSliding
-          ? {}
-          : {
-              ...slideAnimation,
-            }
-      }
-    ></Button>
+    </Box>
   );
 };

@@ -29,6 +29,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@types/react-scroll": "^1.8.7",
     "@types/react-slick": "^0.23.10"
   }
 }

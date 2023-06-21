@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { RefObject, useEffect, useRef, useState } from "react";
 
 const Typewriter = () => {
-  const typewriterRef = useRef(null);
+  const typewriterRef = useRef<HTMLPreElement>(null);
   const object = `const person = {
   name: 'Callum Thomas',
   location: 'Melbourne, Australia',
@@ -16,7 +16,7 @@ const Typewriter = () => {
   const [isTypingComplete, setIsTypingComplete] = useState(false);
 
   useEffect(() => {
-    const setupTypewriter = (element) => {
+    const setupTypewriter = (element: HTMLPreElement) => {
       const HTML = element.innerHTML;
       element.innerHTML = "";
 
@@ -65,7 +65,9 @@ const Typewriter = () => {
             const newSpan = document.createElement("span");
             element.appendChild(newSpan);
             newSpan.innerHTML = tag;
-            tag = newSpan.firstChild;
+            if (newSpan.firstChild) {
+              tag = newSpan.firstChild.textContent || "";
+            }
           }
         }
 
@@ -96,8 +98,10 @@ const Typewriter = () => {
     };
 
     const typewriterElement = typewriterRef.current;
-    const typewriter = setupTypewriter(typewriterElement);
-    typewriter.type();
+    const typewriter = typewriterElement
+      ? setupTypewriter(typewriterElement)
+      : null;
+    typewriter?.type();
   }, []);
 
   return (
